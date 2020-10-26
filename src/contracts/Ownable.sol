@@ -40,7 +40,7 @@ contract Ownable {
         address payable Client;
         string startDate;
         string endDate;
-        uint256 nday;
+        uint256 Fare;
     }
 
     function addCar(
@@ -75,7 +75,7 @@ contract Ownable {
         string memory _Cphno,
         string memory _startDate,
         string memory _endDate,
-        uint256 _nday
+        uint256 _tFare
     ) public payable {
         Car memory _car = cars[_id];
 
@@ -83,8 +83,7 @@ contract Ownable {
             keccak256(abi.encodePacked((_car.Status))) ==
                 keccak256(abi.encodePacked(("Available")))
         );
-        address payable _owner = _car.Owner;
-        address(_owner).transfer(msg.value);
+
         _car.timesRented = _car.timesRented + 1;
         _car.Status = "Hired";
         _car.client = msg.sender;
@@ -99,12 +98,14 @@ contract Ownable {
             msg.sender,
             _startDate,
             _endDate,
-            _nday
+            _tFare
         );
     }
 
-    function endRent(uint256 _id) public {
+    function endRent(uint256 _id) public payable {
         Car memory _car = cars[_id];
+        address payable _owner = _car.Owner;
+        address(_owner).transfer(5 ether);
         _car.Status = "Available";
         _car.client = address(0x0);
         cars[_id] = _car;
