@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./styles/App.css";
 import Web3 from "web3";
-
+import Footer from "./footer";
 class Trns extends Component {
   async componentWillMount() {
     // Load Web3
@@ -25,7 +25,7 @@ class Trns extends Component {
     // Fetch latest 10 blocks
     let block;
     let latestBlocks = [];
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 5; i++) {
       block = await web3.eth.getBlock(latestBlock.number - i);
       console.log(block);
       latestBlocks.push(block);
@@ -65,71 +65,115 @@ class Trns extends Component {
 
   render() {
     return (
-      <div>
-        <div className="container-fluid mt-5">
-          <div className="row">
-            <main role="main" className="col-lg-12 d-flex text-center">
-              <div
-                className="content mr-auto ml-auto"
-                style={{ width: "800px" }}
-              >
-                <h5>Ethereum Blockchain Explorer</h5>
-                <div className="row">
-                  <div className="col-4">
-                    <div className="bg-light pt-4 pb-3 m-1">
-                      <h5>Latest Block</h5>
-                      <p>{this.state.blockNumber}</p>
-                    </div>
-                  </div>
-                  <div className="col-4">
-                    <div className="bg-light pt-4 pb-3 m-1">
-                      <h5>Difficulty</h5>
-                      <p>{this.state.difficulty}</p>
-                    </div>
-                  </div>
-                  <div className="col-4">
-                    <div className="bg-light pt-4 pb-3 m-1">
-                      <h5>Gas Price</h5>
-                      <p>{this.state.gasPrice}</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="row">
-                  <div className="col-lg-12 mt-3">
-                    <div className="card">
-                      <div className="card-header">
-                        <h5>Latest Blocks</h5>
-                      </div>
-                      <div className="card-body">
-                        <table className="table">
-                          <thead>
-                            <tr>
-                              <th scope="col">#</th>
-                              <th scope="col">Hash</th>
-                              <th scope="col">Timestamp</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {this.state.latestBlocks.map((block, key) => {
-                              return (
-                                <tr key={key}>
-                                  <th scope="row">{block.number}</th>
-                                  <td>{block.hash.substring(0, 20)}...</td>
-                                  <td>{block.timestamp}</td>
-                                </tr>
-                              );
-                            })}
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
+      <div className="stats">
+        <div className="container">
+          <div style={{ paddingTop: "100px" }}>
+            <div className="row">
+              <div class="card-1 col-md-3 ml-5">
+                <div class="card-body">
+                  <h2
+                    class="card-title"
+                    style={{ fontSize: "20px", opacity: "0.5" }}
+                  >
+                    Latest Block
+                  </h2>
+                  <p class="card-text" style={{ textAlign: "center" }}>
+                    {this.state.blockNumber}
+                  </p>
                 </div>
               </div>
-            </main>
+              <div class="card-1 col-md-3 ml-5">
+                <div class="card-body">
+                  <h2
+                    class="card-title"
+                    style={{ fontSize: "20px", opacity: "0.5" }}
+                  >
+                    Gas Price
+                  </h2>
+                  <p class="card-text" style={{ textAlign: "center" }}>
+                    {this.state.gasPrice}
+                  </p>
+                </div>
+              </div>
+              <div class="card-1 col-md-3 ml-5 mr-0">
+                <div class="card-body">
+                  <h2
+                    class="card-title"
+                    style={{ fontSize: "20px", opacity: "0.5" }}
+                  >
+                    Difficulty
+                  </h2>
+                  <p class="card-text" style={{ textAlign: "center" }}>
+                    {this.state.difficulty}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-lg-12">
+              <h2 style={{ paddingTop: "40px", color: "white" }}>
+                Ethereum Blockchain Explorer
+              </h2>
+            </div>
+
+            <div
+              className="row"
+              style={{ paddingLeft: "200px", paddingBottom: "100px" }}
+            >
+              <div className="col-lg-12">
+                <h5 style={{ color: "white" }}>Latest Blocks</h5>
+
+                <table className="table blocks">
+                  <thead>
+                    <tr>
+                      <th scope="col" style={{ textAlign: "center" }}>
+                        Block Number
+                      </th>
+                      <th scope="col" style={{ textAlign: "center" }}>
+                        Hash
+                      </th>
+                      <th scope="col">Timestamp</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {this.state.latestBlocks.map((block, key) => {
+                      return (
+                        <tr key={key}>
+                          <td
+                            style={{
+                              textAlign: "center",
+                              border: "0",
+                            }}
+                          >
+                            {block.number}
+                          </td>
+                          <td
+                            style={{
+                              textAlign: "center",
+                              border: "0",
+                            }}
+                          >
+                            {block.hash.substring(0, 20)}...
+                          </td>
+                          <td
+                            style={{
+                              textAlign: "center",
+                              border: "0",
+                            }}
+                          >
+                            {block.timestamp}
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }

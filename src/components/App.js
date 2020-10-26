@@ -14,6 +14,7 @@ import Starter from "./Starter";
 import SignUp from "./SignUp";
 import Navtwo from "./Navtwo";
 import Test from "./Test";
+// import { db } from "./Base";
 class App extends Component {
   async componentWillMount() {
     await this.loadWeb3();
@@ -103,7 +104,7 @@ class App extends Component {
   bookCar(id, name, phno, rate, start, end, day) {
     let amt = window.web3.utils.toWei(rate, "Ether");
     this.state.ownable.methods
-      .bookCar(id, name, phno, start, end, day)
+      .bookCar(id, name, phno, start, end, rate * day)
       .send({ value: amt * day, from: this.state.account })
       .on("transactionHash", (hash) => {
         console.log(hash);
@@ -116,7 +117,10 @@ class App extends Component {
       .send({ from: this.state.account });
   }
 
-  endRent(id) {
+  endRent(id, regno) {
+    // let amt = window.web3.utils.toWei("4", "Ether");
+    console.log(typeof this.state.account);
+    console.log("0xafe74dec1686e44b72aa9f4f236233e7614f7de6");
     this.state.ownable.methods.endRent(id).send({ from: this.state.account });
   }
 

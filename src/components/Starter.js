@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./styles/App.css";
 import Navs from "./Navs";
+import Footer from "./footer";
 export class Starter extends Component {
   render() {
     return (
@@ -13,7 +14,7 @@ export class Starter extends Component {
             <div className="row">
               <div className="col-lg-12 text-center">
                 <h2>Why Ether Car?</h2>
-                <p>
+                <p className="pb-2">
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt
                   ut voluptatum eius sapiente, totam reiciendis temporibus qui
                   quibusdam, recusandae sit vero unde, sed, incidunt et ea quo
@@ -31,7 +32,7 @@ export class Starter extends Component {
           <div className="container">
             <div className="row">
               <div className="col-lg-12 text-center">
-                <h2 className="section-heading text-uppercase">
+                <h2 className="section-heading text-uppercase pt-5">
                   Our Amazing Team
                 </h2>
                 <h3 className="section-subheading text-muted">
@@ -44,7 +45,7 @@ export class Starter extends Component {
                 <div className="team-member ">
                   <img className="mx-auto rounded-circle" src="" alt="" />
                   <h4>Akhilesh Nair</h4>
-                  <p className="text-muted">Lead Designer</p>
+                  <p className="text-muted">IOT</p>
                   <ul className="list-inline social-buttons">
                     <li className="list-inline-item">
                       <a href="#something">
@@ -67,7 +68,7 @@ export class Starter extends Component {
               <div className="col-sm-4">
                 <div className="team-member">
                   <img className="mx-auto rounded-circle" src="" alt="" />
-                  <h4>Nelson Chacko</h4>
+                  <h4>IOT</h4>
                   <p className="text-muted">Lead Marketer</p>
                   <ul className="list-inline social-buttons">
                     <li className="list-inline-item">
@@ -92,11 +93,11 @@ export class Starter extends Component {
                 <div className="team-member">
                   <img
                     className="mx-auto rounded-circle"
-                    src={require("../components/images/rihab.jpg")}
+                    //src="{require("../components/images/rihab.jpg")}"
                     alt=""
                   />
                   <h4>Rihab Kasim</h4>
-                  <p className="text-muted">Lead Developer</p>
+                  <p className="text-muted">Blockchain</p>
                   <ul className="list-inline social-buttons">
                     <li className="list-inline-item">
                       <a href="#something">
@@ -128,46 +129,7 @@ export class Starter extends Component {
             </div>
           </div>
         </section>
-        <div className="main-footer mb-2">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-4 col-sm-6">
-                <h4>Rihab Kasim</h4>
-                <img src="./logo.png" alt="hey" />
-                <ul className="list-unstyled">
-                  <li>Rihab</li>
-                  <li>Kasim</li>
-                  <li>RIhab</li>
-                  <li>KAsim</li>
-                </ul>
-              </div>
-              <div className="col-md-4 col-sm-6">
-                <h4>Rihab Kasim</h4>
-                <ul className="list-unstyled">
-                  <li>Rihab</li>
-                  <li>Kasim</li>
-                  <li>RIhab</li>
-                  <li>KAsim</li>
-                </ul>
-              </div>
-              <div className="col-md-4 col-sm-6">
-                <h4>Rihab Kasim</h4>
-                <ul className="list-unstyled">
-                  <li>Rihab</li>
-                  <li>Kasim</li>
-                  <li>RIhab</li>
-                  <li>KAsim</li>
-                </ul>
-              </div>
-            </div>
-            {/* Footer Bottom */}
-            <div className="footer-bottom">
-              <p className="text-xs-center">
-                &copy;{new Date().getFullYear()} Ether Car - All Rights Reserved
-              </p>
-            </div>
-          </div>
-        </div>
+        <Footer />
       </div>
     );
   }

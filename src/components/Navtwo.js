@@ -6,7 +6,7 @@ export class Navtwo extends Component {
       <div>
         <nav className="navbar navbar-expand-lg fixed-top  navtwo">
           <div className="container">
-            <Link className="navbar-brand text-dark" to="/">
+            <Link className="navbar-brand " to="/">
               <i className="fab fa-ethereum"></i> Ether Car
             </Link>
             <button
@@ -27,29 +27,29 @@ export class Navtwo extends Component {
             >
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item active">
-                  <Link className="nav-link text-dark" to="/LandingPage">
+                  <Link className="nav-link " to="/LandingPage">
                     Cars&nbsp;<i className="fas fa-car"></i>
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link text-dark   ml-5" to="/Owner">
+                  <Link className="nav-link   ml-5" to="/Owner">
                     Owner&nbsp;<i className="fas fa-user-tie"></i>
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link text-dark ml-5" to="/Client">
+                  <Link className="nav-link  ml-5" to="/Client">
                     Client&nbsp;<i className="fas fa-user"></i>
                   </Link>
                 </li>
 
                 <li className="nav-item">
-                  <Link className="nav-link text-dark ml-5" to="/Trns">
+                  <Link className="nav-link  ml-5" to="/Trns">
                     Statistics&nbsp;<i className="fas fa-cubes"></i>
                   </Link>
                 </li>
 
                 <li className="nav-item">
-                  <Link className="nav-link text-dark ml-5" to="/SignUp">
+                  <Link className="nav-link  ml-5" to="/SignUp">
                     Sign Up&nbsp;<i className="fas fa-sign-in-alt"></i>
                   </Link>
                 </li>

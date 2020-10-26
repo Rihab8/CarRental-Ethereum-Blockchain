@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Footer from "./footer";
 //import "../components/styles/cards.scss";
 // import { Container, Row, Col } from "react-bootstrap";
 // import "./nav.jpg";
@@ -8,19 +9,34 @@ class LandingPage extends Component {
     super(props);
     this.state = {};
 
-    this.isSigned = this.isSigned.bind(this);
+    // this.isSigned = this.isSigned.bind(this);
   }
-  isSigned() {
-    if (!this.props.authorized) alert("Sign in First");
-  }
+  // isSigned() {
+  //   if (!this.props.authorized) alert("Sign in First");
+  // }
   render() {
     return (
-      <div style={{ backgroundColor: "#25d366" }}>
+      <div style={{ backgroundColor: "black" }}>
+        <section style={{ paddingTop: "80px" }}>
+          <h1
+            style={{
+              fontFamily: "Montserrat",
+              textAlign: "center",
+              fontSize: "70px",
+              color: "white",
+            }}
+          >
+            CARS AVAILABLE
+          </h1>
+        </section>
         <div className="container carlist" style={{ paddingTop: "100px" }}>
           <div className="row">
             {this.props.cars &&
               this.props.cars.map((car, index) => (
-                <div class="card col-md-3 col-sm-6" style={{ width: "18rem" }}>
+                <div
+                  class="card col-md-3 col-sm-6"
+                  style={{ width: "18rem", height: "380px" }}
+                >
                   <img
                     src={`https://ipfs.io/ipfs/${car.Image}`}
                     class="card-img-top"
@@ -29,41 +45,36 @@ class LandingPage extends Component {
                   />
                   <div class="card-body">
                     <h3 class="card-title">{car.Model}</h3>
-                    <p class="card-text">
-                      {" "}
-                      Rate:{" "}
-                      {window.web3.utils.fromWei(
-                        car.Rate.toString(),
-                        "Ether"
-                      )}{" "}
+
+                    <p
+                      class="card-text"
+                      style={{ fontStyle: "normal", fontSize: "20px" }}
+                    >
+                      Rate: &nbsp;
+                      {car.Rate.toString()}
                       ETH
                     </p>
+                    <p>Times Rented : {car.timesRented.toString()}</p>
                     {car.Status === "Available" ? (
-                      this.props.authorized ? (
-                        <Link
-                          to={{
-                            pathname: "/Booking",
-                            state: {
-                              model: car.Model,
-                              reg: car.Regno,
-                              image: car.Image,
-                              rate: car.Rate.toString(),
-                              id: car.id.toString(),
-                            },
-                          }}
-                        >
-                          <button
-                            onClick={this.isSigned}
-                            class="btn btn-primary deep-purple-text p-1 mx-0 mb-0 book-btn"
-                          >
-                            book now
-                          </button>
-                        </Link>
-                      ) : (
-                        <button onClick={this.isSigned}>book now</button>
-                      )
+                      <Link
+                        to={{
+                          pathname: "/Booking",
+                          state: {
+                            model: car.Model,
+                            reg: car.Regno,
+                            image: car.Image,
+                            rate: car.Rate.toString(),
+                            id: car.id.toString(),
+                            des: car.desc,
+                          },
+                        }}
+                      >
+                        <button class="btn  deep-purple-text p-1 mx-0 mb-0 book-btn">
+                          Book now
+                        </button>
+                      </Link>
                     ) : (
-                      <p class="btn btn-flat deep-purple-text p-1 mx-0 mb-0">
+                      <p class="btn btn-flat deep-purple-text text-white p-1 mx-0 mb-0">
                         Hired
                       </p>
                     )}
@@ -72,6 +83,7 @@ class LandingPage extends Component {
               ))}
           </div>
         </div>
+        <Footer />
       </div>
     );
   }
